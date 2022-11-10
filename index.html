@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slides-show</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="arrow l" onclick="prev">
+            <img src="navigation-right.png" alt="l">
+        </div>
+        <div class="slide slide-1">
+            <div class="caption">
+                <h3>The city of Lagos</h3>
+                <p>We love Lagos!</p>
+            </div>
+        </div>
+
+        <div class="slide slide-2">
+            <div class="caption">
+                <h3>The city of Kaduna</h3>
+                <p>A beautiful state!</p>
+            </div>
+        </div>
+
+        <div class="slide slide-3">
+            <div class="caption">
+                <h3>The city of Abuja</h3>
+                <p>The capital city of Nigeria</p>
+            </div>
+        </div>
+
+        <div class="slide slide-4">
+            <div class="caption">
+                <h3>The city of Enugu</h3>
+                <p>The coal city state</p>
+            </div>
+        </div>
+
+        <div class="slide slide-5">
+            <div class="caption">
+                <h3>The city of Kano</h3>
+                <p>The state of commerce and hospitality!</p>
+            </div>
+        </div>
+
+        <div class="slide slide-6">
+            <div class="caption">
+                <h3>The city of Ebonyi</h3>
+                <p>The salt of the nation</p>
+            </div>
+        </div>
+        <div class="arrow r" onclick="next()">
+            <img src="navigation-left.png" alt="r">
+        </div>
+    </div>
+    
+</body>
+<script src="app.js">
+    let slide = document.querySelectorAll('.slide');
+var current = 0;
+
+function cls(){
+    for(let i = 0; i < slide.length; i++){
+        slide[i].style.display = 'none';
+    }
+}
+function next(){
+    cls();
+    if(current === slide.length-1) current = -1;
+    current++;
+    slide[current].style.display = 'block';
+    slide[current].opacity = '0.4';
+
+    var x = 0.4;
+    var intx = setInterval(function(){
+        x+=0.1;
+        slide[current].opacity.display = x;
+        if(x >=1){
+            clearInterval(intx);
+            x = 0.4;
+        }
+    }, 100);
+}
+function start(){
+    cls();
+    slide[current].style.display = 'block';
+}
+start();
+
+
+
+function prev(){
+    cls();
+    if (current === 0) current = slide.length;
+    current--;
+    slide[current].style.display = 'block';
+    slide[current].opacity.display = '0.4';
+
+    var x = 0.4;
+    var intX = setInterval(function(){
+        x+=0.1;
+        slide[current].opacity.display = x;
+        if(x >=1){
+            clearInterval(intX);
+            x = 0.4;
+        }
+    }, 100);
+}
+function start(){
+    cls();
+    slide[current].style.display = 'block';
+}
+start();
+
+</script>
+
+</html>
